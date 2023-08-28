@@ -13,7 +13,7 @@
                 <td>{{storeNotes.totalNotesCount}}</td>
             </tr>
             <tr>
-                <td>Number of character of all notes</td>
+                <td>Number of Characters (All Notes)</td>
                 <td>{{ storeNotes.totalCharactersCount }}</td>
             </tr>
         </tbody>
