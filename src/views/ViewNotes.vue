@@ -11,7 +11,7 @@
 
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import Note from '@/components/Notes/Note.vue'
 import AddEditNote from '@/components/Notes/AddEditNote.vue';
 import {useStoreNotes} from '@/stores/storeNotes'
@@ -24,4 +24,11 @@ const addNote = () => {
     newNote.value = ''
     addEditNoteRef.value.focusTextarea();
 }
+
+watch(newNote,(newValue,oldValue) => {
+    if(newValue.length === 100)
+    {
+        alert('Max Length reached')
+    }
+})
 </script>
