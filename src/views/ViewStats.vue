@@ -18,13 +18,19 @@
             </tr>
         </tbody>
     </table>
-    <input type="text" v-model="searchTerm" placeholder="Search" class="input" v-autofocus />
+    <input type="text" v-model="feedback" placeholder="Feedback" class="input" v-autofocus maxlength="100" />
    </div>
 </template>
 
 <script setup>
+import {ref} from 'vue'
 import { useStoreNotes } from '@/stores/storeNotes';
 import {vAutofocus} from '@/directives/vAutofocus'
+import {useWatchCharacters} from '@/use/useWatchCharacters'
 
 const storeNotes = useStoreNotes();
+
+const feedback = ref('');
+
+useWatchCharacters(feedback,50);
 </script>
