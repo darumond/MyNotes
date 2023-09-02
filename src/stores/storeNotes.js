@@ -3,8 +3,9 @@ import { defineStore } from 'pinia'
 import { collection, onSnapshot, doc, deleteDoc, updateDoc, query, orderBy, addDoc } from "firebase/firestore";
 import { db } from '@/js/firebase'
 import { useStoreAuth } from './storeAuth';
-let notesCollectionRef = null
-let notesCollectionquery = null
+let notesCollectionRef
+let notesCollectionquery
+let getNotesSnapshot = null
 export const useStoreNotes = defineStore('storeNotes', {
     state: () => {
         return {
@@ -24,7 +25,10 @@ export const useStoreNotes = defineStore('storeNotes', {
 
         async getNote() {
             this.notesLoaded = false;
-            onSnapshot(notesCollectionquery, (querySnapshot) => {
+
+            
+
+            getNotesSnapshot = onSnapshot(notesCollectionquery, (querySnapshot) => {
                 let notes = []
                 querySnapshot.forEach((doc) => {
                     let note = {
@@ -57,6 +61,7 @@ export const useStoreNotes = defineStore('storeNotes', {
         },
         clearNotes() {
             this.notes=[]
+            if(getNotesSnapshot) getNotesSnapshot() //unsubscribe
         }
     },
     getters: {
