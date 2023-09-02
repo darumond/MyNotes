@@ -30,28 +30,22 @@ export const useStoreAuth = defineStore('storeAuth', {
             createUserWithEmailAndPassword(auth, credentials.email, credentials.password)
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    console.log("user: ", user)
                 })
                 .catch((error) => {
-                    console.log('error message: ', error);
                 });
         },
         loginUser(credentials) {
             signInWithEmailAndPassword(auth, credentials.email, credentials.password)
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    console.log("user: ", user)
                 })
                 .catch((error) => {
-                    console.log("error: ", error)
                 });
 
         },
         logoutUser() {
             signOut(auth).then(() => {
-                console.log('User signed out');
             }).catch((error) => {
-                console.log("error: ", error);
             });
 
         }
