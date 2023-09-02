@@ -9,7 +9,7 @@
         <template v-else>
             <Note v-for="note in storeNotes.notes" :key="note.id" :note="note"/>
         </template>
-        <div class="is-size-4 has-text-centered has-text-grey-light is-family-monospace py-6" v-if="!storeNotes.notes.length">
+        <div class="is-size-4 has-text-centered has-text-grey-light is-family-monospace py-6" v-if="!storeNotes.notes.length&&storeNotes.notesLoaded">
             Write some Notes!
         </div>
     </div>
