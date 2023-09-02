@@ -54,6 +54,9 @@ export const useStoreNotes = defineStore('storeNotes', {
             await updateDoc(doc(notesCollectionRef, idNote), {
                 content: newContent
             });
+        },
+        clearNotes() {
+            this.notes=[]
         }
     },
     getters: {
